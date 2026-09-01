@@ -1,0 +1,164 @@
+:root {
+  --green: #788252;
+  --green-dark: #5f6941;
+  --pink: #e9aeb3;
+  --cream: #fffdf8;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #fff;
+  color: var(--green);
+  font-family: Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; }
+a, button { -webkit-tap-highlight-color: transparent; }
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  background: #fff;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+.loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-screen p { margin: 0; color: var(--green); font-size: 1rem; }
+.loading-dot {
+  width: 34px;
+  height: 34px;
+  border: 2px solid #f2c9cb;
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin .9s linear infinite;
+}
+
+main { width: 100%; }
+.pdf-page {
+  position: relative;
+  width: 100%;
+  max-width: 810px;
+  margin: 0 auto;
+  line-height: 0;
+  background: #fff;
+}
+.pdf-page > img {
+  width: 100%;
+  height: auto;
+  max-width: 810px;
+  user-select: none;
+}
+
+/* Hotspots transparentes: a arte continua 100% intacta, mas os botões do PDF são clicáveis. */
+.hotspot {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent;
+  outline: none;
+}
+.hotspot:focus-visible { box-shadow: 0 0 0 4px rgba(120,130,82,.35); }
+.sizes-hotspot {
+  left: 22%;
+  top: 68%;
+  width: 28%;
+  height: 16%;
+}
+.map-hotspot {
+  right: 21%;
+  top: 68%;
+  width: 28%;
+  height: 16%;
+}
+
+.countdown-section {
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  padding: 70px 20px;
+  text-align: center;
+  background: radial-gradient(circle at center, #fffdf8, #f8f5e9);
+}
+.countdown-wrap { width: min(760px, 100%); }
+.small-label { font-size: .8rem; font-weight: 700; letter-spacing: .18em; }
+.countdown-wrap h2 { margin: 8px 0 30px; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 500; }
+.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.countdown div { padding: 8px; }
+.countdown strong { display: block; color: var(--pink); font-size: clamp(2.2rem, 7vw, 4.8rem); font-weight: 500; }
+.countdown span { font-size: .72rem; font-weight: 700; letter-spacing: .1em; }
+.countdown-note { margin-top: 24px; font-size: 1.1rem; }
+
+.final-section {
+  min-height: 300px;
+  padding: 80px 20px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 20px;
+  text-align: center;
+  background: #fff;
+}
+.final-section p { margin: 0; color: #aa9d72; font: 3.5rem/1.1 Georgia, serif; }
+.back-button { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(120,130,82,.35); padding-bottom: 4px; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(73,75,53,.42);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s, visibility .25s;
+}
+.modal.open { opacity: 1; visibility: visible; pointer-events: auto; }
+.modal-content {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 38px 28px 30px;
+  text-align: center;
+  border: 1px solid rgba(170,157,114,.2);
+  border-radius: 28px;
+  background: #fffdf8;
+  box-shadow: 0 30px 80px rgba(0,0,0,.22);
+}
+.close { position: absolute; top: 8px; right: 13px; width: 40px; height: 40px; border: 0; background: transparent; color: var(--green); cursor: pointer; font-size: 2rem; }
+.modal-kicker { margin: 0; color: var(--pink); font-size: .78rem; font-weight: 700; letter-spacing: .16em; }
+.modal h2 { margin: 6px 0 10px; color: var(--green); font-size: 2.3rem; }
+.modal-content > p:not(.modal-kicker):not(.modal-hint) { margin: 0 auto 18px; max-width: 350px; font-size: 1.1rem; line-height: 1.4; }
+.size-list { overflow: hidden; margin: 20px auto; max-width: 330px; border-radius: 15px; background: #f9e3e2; }
+.size-list div { display: flex; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid rgba(170,157,114,.15); font-size: 1.05rem; }
+.size-list div:last-child { border-bottom: 0; }
+.modal-hint { margin: 0; font-size: .9rem; opacity: .7; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (min-width: 811px) {
+  .pdf-page { box-shadow: 0 0 30px rgba(100,100,80,.05); }
+}
+
+@media (max-width: 520px) {
+  .countdown-section { min-height: 360px; padding: 55px 14px; }
+  .countdown { gap: 0; }
+  .countdown div { padding: 4px 1px; }
+  .countdown strong { font-size: clamp(1.8rem, 12vw, 3rem); }
+  .countdown span { font-size: .62rem; }
+  .final-section p { font-size: 2.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+}

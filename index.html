@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Convite para o primeiro aniversário da fadinha Olívia.">
+  <title>Olívia 1 ano | Convite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+    <div class="loading-dot"></div>
+    <p>Um convite encantado está chegando...</p>
+  </div>
+
+  <main>
+    <!-- As duas páginas abaixo são imagens renderizadas diretamente do PDF original,
+         em alta resolução, para preservar exatamente a arte, tipografia e composição. -->
+    <section class="pdf-page" id="inicio" aria-label="Capa do convite">
+      <img src="assets/capa-pdf.png" alt="Convite Olívia 1 ano">
+    </section>
+
+    <section class="pdf-page pdf-page-2" id="convite" aria-label="Detalhes do convite">
+      <img src="assets/pagina2-pdf.png" alt="Detalhes do convite de Olívia">
+
+      <!-- Áreas invisíveis sobre os botões que já existem na arte do PDF -->
+      <a class="hotspot sizes-hotspot" href="presentes.html" id="sizesBtn" aria-label="Abrir lista de presentes"></a>
+      <a class="hotspot map-hotspot" href="https://www.google.com/maps/place/7%C2%B032%2702.2%22S+46%C2%B003%2733.8%22W/@-7.533947,-46.0619579,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.533947!4d-46.059383?entry=ttu&amp;g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização no Google Maps"></a>
+    </section>
+
+    <section class="countdown-section" id="contagem" aria-label="Contagem regressiva">
+      <div class="countdown-wrap">
+        <p class="small-label">FALTAM</p>
+        <h2>Para o grande dia ✨</h2>
+        <div class="countdown" id="countdown">
+          <div><strong id="days">--</strong><span>DIAS</span></div>
+          <div><strong id="hours">--</strong><span>HORAS</span></div>
+          <div><strong id="minutes">--</strong><span>MIN</span></div>
+          <div><strong id="seconds">--</strong><span>SEG</span></div>
+        </div>
+        <p class="countdown-note">03 de outubro • 17 horas</p>
+      </div>
+    </section>
+
+    <section class="final-section">
+      <p>Esperamos você! ✨</p>
+      <a class="back-button" href="#inicio">voltar ao início ↑</a>
+    </section>
+  </main>
+
+  <div class="modal" id="sizesModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="closeModal" type="button" aria-label="Fechar">×</button>
+      <p class="modal-kicker">PARA A FADINHA</p>
+      <h2 id="modalTitle">Meus tamanhos</h2>
+      <p>Coloque aqui os tamanhos da Olívia para facilitar na escolha do presente.</p>
+      <div class="size-list">
+        <div><span>Roupinhas</span><strong>—</strong></div>
+        <div><span>Calçados</span><strong>—</strong></div>
+      </div>
+      <p class="modal-hint">Edite os tamanhos diretamente no <strong>index.html</strong>.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
